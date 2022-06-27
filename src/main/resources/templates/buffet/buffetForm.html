@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Inserimento buffet</title>
+</head>
+
+<body>
+	<a href="/">Home</a>
+	<h4>Inserisci nuovo buffet</h4>
+	<form th:action="@{/buffet}" method="POST" th:object="${buffet}">
+		<div th:if="${#fields.hasGlobalErrors()}">
+			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">ErroreGlobale</p>
+		</div>
+		<div>
+			Nome:
+			<input class="input" type=text th:field="*{nome}" />
+			<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+
+		</div>
+		<div>
+			Descrizione:
+			<input class="input" type=text th:field="*{descrizione}" />
+		</div>
+		<div>
+			Chef:
+			<select th:field="*{chef}">
+				<option th:each="chef : ${chefs}" th:value="${chef.id}" th:text="${chef.nome}" +"${chef.cognome}" />
+			</select>
+			<span th:if="${#fields.hasErrors('chef')}" th:errors="*{chef}"></span>
+		</div>
+		<p>
+			<label>Piatti:
+				<input type="checkbox" name="piatti" th:each="piatto: ${piatti}" th:text="${piatto.nome}"
+					th:value="${piatto.id}" th:field="*{piatti}" />
+			</label>
+		</p>
+		<div><button type="submit">Conferma</button></div>
+	</form>
+</body>
+
+</html>

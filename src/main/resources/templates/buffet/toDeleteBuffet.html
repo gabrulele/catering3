@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Rimozione buffet</title>
+</head>
+
+<body>
+	<div>
+		<a href="/">Home</a>
+	</div>
+	<h4>Dettaglio buffet da rimuovere</h4>
+	<div th:object=${buffet}>
+		<span th:text="*{nome}+': '">Mediterraneo</span>
+		<span th:text="*{descrizione}">Descrizione</span>
+		<a th:href="@{'/deleteBuffet'+'/'+${buffet.id}}" th:text="conferma">conferma</a>
+	</div>
+</body>
+
+</html>
