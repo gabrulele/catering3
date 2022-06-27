@@ -28,6 +28,8 @@ public class Piatto {
 	@ManyToMany(mappedBy = "piatti")
 	private List<Ingrediente> ingredienti;
 
+	
+	//ciao
 	public Piatto(String nome, String descrizione, List<Buffet> buffets, List<Ingrediente> ingredienti) {
 		super();
 		this.nome = nome;
