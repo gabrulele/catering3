@@ -61,7 +61,6 @@ public class BuffetController {
 	
 	@PostMapping("/buffet/{id}")
 	public String updateBuffet(@Valid @ModelAttribute("buffet") Buffet buffet, BindingResult bindingResult, Model model) {
-		buffetValidator.validate(buffet, bindingResult);
 		
 		if(!bindingResult.hasErrors()) {
 			buffetService.save(buffet);

@@ -48,7 +48,6 @@ public class IngredienteController {
 	
 	@PostMapping("/ingrediente/{id}")
 	public String updateIngrediente(@Valid @ModelAttribute("ingrediente") Ingrediente ingrediente, BindingResult bindingResult, Model model) {
-		ingredienteValidator.validate(ingrediente, bindingResult);
 		
 		if(!bindingResult.hasErrors()) {
 			ingredienteService.save(ingrediente);
