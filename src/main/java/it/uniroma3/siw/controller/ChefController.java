@@ -39,6 +39,26 @@ public class ChefController {
 		return "/chef/chefs.html";
 	}
 	
+	@GetMapping("/toUpdateChef/{id}")
+	public String toUpdateChef(@PathVariable("id") Long id, Model model) {
+		Chef chef = chefService.findById(id);
+		model.addAttribute("chef", chef);
+		return "/chef/chefFormDiModifica.html";
+	}
+	
+	@PostMapping("/chef/{id}")
+	public String updateChef(@Valid @ModelAttribute("chef") Chef chef, BindingResult bindingResult, Model model) {
+		chefValidator.validate(chef, bindingResult);
+		chefValidator.validateNomeAndCognome(chef, bindingResult);
+		
+		if(!bindingResult.hasErrors()) {
+			chefService.save(chef);
+			model.addAttribute("chef", chef);
+			return "/chef/chef.html";
+		}
+		return "/chef/chefFormDiModifica.html";
+	}
+	
 	@PostMapping("/chef")
 	public String addChef(@Valid @ModelAttribute("chef") Chef chef, BindingResult bindingResult, Model model) {
 		chefValidator.validate(chef, bindingResult);
