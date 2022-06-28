@@ -62,4 +62,20 @@ public class ChefService {
 				(chef.getNome(), chef.getCognome(), chef.getNazionalita());
 	}
 
+	public boolean containsNumbers(String nome, String cognome, String nazionalita) {
+		for(char c: nome.toCharArray()) {
+			if(Character.isDigit(c))
+				return true;
+		}
+		for(char c: cognome.toCharArray()) {
+			if(Character.isDigit(c))
+				return true;
+		}
+		for(char c: nazionalita.toCharArray()) {
+			if(Character.isDigit(c))
+				return true;
+		}
+		return false;
+	}
+
 }

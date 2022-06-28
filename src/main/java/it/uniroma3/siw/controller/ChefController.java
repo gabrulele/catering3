@@ -42,6 +42,7 @@ public class ChefController {
 	@PostMapping("/chef")
 	public String addChef(@Valid @ModelAttribute("chef") Chef chef, BindingResult bindingResult, Model model) {
 		chefValidator.validate(chef, bindingResult);
+		chefValidator.validateNomeAndCognome(chef, bindingResult);
 		
 		if(!bindingResult.hasErrors()) {
 			chefService.save(chef);

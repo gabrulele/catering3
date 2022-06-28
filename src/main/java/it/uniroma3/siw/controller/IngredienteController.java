@@ -27,14 +27,16 @@ public class IngredienteController {
 	public String toDeleteIngrediente(@PathVariable("id") Long id, Model model) {
 		Ingrediente ingrediente = ingredienteService.findById(id);
 		model.addAttribute("ingrediente", ingrediente);
-		return "toDeleteIngrediente.html";
+		return "/ingrediente/toDeleteIngrediente.html";
 	}
 	
 	@GetMapping("/deleteIngrediente/{id}")
 	public String deleteIngrediente(@PathVariable("id") Long id, Model model) {
+		Ingrediente ingrediente = ingredienteService.findById(id);
+		ingredienteService.updateBuffets(ingrediente);
 		ingredienteService.deleteById(id);
 		model.addAttribute("ingredienti", ingredienteService.findAll());
-		return "ingredienti.html";
+		return "/ingrediente/ingredienti.html";
 	}
 	
 	@PostMapping("/ingrediente")
@@ -44,29 +46,29 @@ public class IngredienteController {
 		if(!bindingResult.hasErrors()) {
 			ingredienteService.save(ingrediente);
 			model.addAttribute("ingrediente", ingrediente);
-			return "ingrediente.html";
+			return "/ingrediente/ingrediente.html";
 		}
-		return "ingredienteForm.html";
+		return "/ingrediente/ingredienteForm.html";
 	}
 	
 	@GetMapping("/ingrediente")
 	public String getAllIngredienti(Model model) {
 		List<Ingrediente> ingredienti = ingredienteService.findAll();
 		model.addAttribute("ingredienti", ingredienti);
-		return "ingredienti.html";
+		return "/ingrediente/ingredienti.html";
 	}
 
 	@GetMapping("/ingrediente/{id}")
 	public String getIngrediente(@PathVariable("id") Long id, Model model) {
 		Ingrediente ingrediente = ingredienteService.findById(id);
 		model.addAttribute("ingrediente", ingrediente);
-		return "ingrediente.html";
+		return "/ingrediente/ingrediente.html";
 	}
 	
 	@GetMapping("/ingredienteForm")
 	public String startIngrediente(Model model) {
 		model.addAttribute("ingrediente", new Ingrediente());
-		return "ingredienteForm.html";
+		return "/ingrediente/ingredienteForm.html";
 	}
 	
 }

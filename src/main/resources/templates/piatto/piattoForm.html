@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Inserimento piatto</title>
+</head>
+
+<body>
+	<a href="/">Home</a>
+	<h4>Inserisci nuovo piatto</h4>
+	<form th:action="@{/piatto}" method="POST" th:object="${piatto}">
+		<div th:if="${#fields.hasGlobalErrors()}">
+			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">ErroreGlobale</p>
+		</div>
+		<div>
+			Nome:
+			<input class="input" type=text th:field="*{nome}" />
+			<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+
+		</div>
+		<div>
+			Descrizione:
+			<input class="input" type=text th:field="*{descrizione}" />
+		</div>
+		<p>
+			<label>Ingredienti:
+				<input type="checkbox" name="ingredienti" th:each="ingrediente: ${ingredienti}" th:text="${ingrediente.nome}"
+					th:value="${ingrediente.id}" th:field="*{ingredienti}" />
+			</label>
+			<span th:if="${#fields.hasErrors('ingredienti')}" th:errors="*{ingredienti}"></span>
+		</p>
+		<div><button type="submit">Conferma</button></div>
+	</form>
+</body>
+
+</html>

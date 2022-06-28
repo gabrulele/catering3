@@ -27,7 +27,7 @@ public class Ingrediente {
 	@Column(length = 2000)
 	private String descrizione;
 	
-	@ManyToMany(cascade={CascadeType.REMOVE})
+	@ManyToMany(mappedBy = "ingredienti", cascade={CascadeType.REMOVE})
 	private List<Piatto> piatti;
 
 	public Ingrediente(String nome, String origine, String descrizione, List<Piatto> piatti) {
@@ -79,5 +79,8 @@ public class Ingrediente {
 	public void setPiatti(List<Piatto> piatti) {
 		this.piatti = piatti;
 	}
+	
+	
+	
 	
 }

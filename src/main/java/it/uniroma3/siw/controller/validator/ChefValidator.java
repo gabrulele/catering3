@@ -19,6 +19,12 @@ public class ChefValidator implements Validator {
 		if(this.chefService.alreadyExists(chef))
 			errors.reject("chef.duplicato");
 	}
+	
+	public void validateNomeAndCognome(Object o, Errors errors) {
+		Chef chef = (Chef) o;
+		if(this.chefService.containsNumbers(chef.getNome(), chef.getCognome(), chef.getNazionalita()))
+			errors.reject("nomeOrCognomeOrNazionalitaChef.haNumeri");
+	}
 
 	@Override
 	public boolean supports(Class<?> aClass) {

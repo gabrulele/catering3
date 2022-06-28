@@ -2,10 +2,15 @@ package it.uniroma3.siw.service;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import it.uniroma3.siw.model.Buffet;
 import it.uniroma3.siw.model.Ingrediente;
+import it.uniroma3.siw.model.Piatto;
 import it.uniroma3.siw.repository.IngredienteRepository;
 
 @Service
@@ -46,6 +51,16 @@ public class IngredienteService {
 	public boolean alreadyExists(Ingrediente ingrediente) {
 		return this.ingredienteRepository.existsIngredienteByNome
 				(ingrediente.getNome());
+	}
+
+	public void updateBuffets(Ingrediente ingrediente) {
+		
+		for(Piatto piatto: ingrediente.getPiatti()) {
+			for(Buffet buffet: piatto.getBuffets()) {
+				buffet.getPiatti().remove(piatto);
+			}
+		}
+		
 	}
 	
 }

@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Piatto {
@@ -22,14 +23,13 @@ public class Piatto {
 	@Column(length = 2000)
 	private String descrizione;
 	
-	@ManyToMany
+	@ManyToMany(mappedBy = "piatti")
 	private List<Buffet> buffets;
 
-	@ManyToMany(mappedBy = "piatti")
+	@NotNull
+	@ManyToMany
 	private List<Ingrediente> ingredienti;
 
-	
-	//ciao
 	public Piatto(String nome, String descrizione, List<Buffet> buffets, List<Ingrediente> ingredienti) {
 		super();
 		this.nome = nome;
@@ -79,5 +79,6 @@ public class Piatto {
 	public void setIngredienti(List<Ingrediente> ingredienti) {
 		this.ingredienti = ingredienti;
 	}
+	
 	
 }

@@ -14,6 +14,7 @@ import it.uniroma3.siw.controller.validator.BuffetValidator;
 import it.uniroma3.siw.model.Buffet;
 import it.uniroma3.siw.service.BuffetService;
 import it.uniroma3.siw.service.ChefService;
+import it.uniroma3.siw.service.PiattoService;
 
 @Controller
 public class BuffetController {
@@ -23,6 +24,9 @@ public class BuffetController {
 	
 	@Autowired
 	private ChefService chefService;
+	
+	@Autowired
+	private PiattoService piattoService;
 	 
 	@Autowired
 	private BuffetValidator buffetValidator;
@@ -49,10 +53,7 @@ public class BuffetController {
 		
 		if(!bindingResult.hasErrors()) {
 			buffetService.save(buffet);
-//			buffetService.update(buffet, buffet.getChef());
-//			chefService.update(buffet.getChef(), buffet);
 			model.addAttribute("buffet", buffet);
-			
 			return "/buffet/buffet.html";
 		}
 		return "/buffet/buffetForm.html";
@@ -76,6 +77,7 @@ public class BuffetController {
 	public String startBuffet(Model model) {
 		model.addAttribute("buffet", new Buffet());
 		model.addAttribute("chefs", chefService.findAll());
+		model.addAttribute("piatti", piattoService.findAll());
 		return "/buffet/buffetForm.html";
 	}
 	

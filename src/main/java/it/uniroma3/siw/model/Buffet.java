@@ -29,7 +29,7 @@ public class Buffet {
 	@ManyToOne
 	private Chef chef;
 	
-	@ManyToMany(mappedBy = "buffets")
+	@ManyToMany
 	private List<Piatto> piatti;
 	
 	public Buffet(String nome, String descrizione, Chef chef) {
@@ -71,6 +71,14 @@ public class Buffet {
 
 	public void setChef(Chef chef) {
 		this.chef = chef;
+	}
+
+	public List<Piatto> getPiatti() {
+		return piatti;
+	}
+
+	public void setPiatti(List<Piatto> piatti) {
+		this.piatti = piatti;
 	}	
 	
 }

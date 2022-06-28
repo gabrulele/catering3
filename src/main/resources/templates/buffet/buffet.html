@@ -23,9 +23,16 @@
 		</div>
 		<div>
 			<strong>Chef:</strong>
-			<a th:href="@{'/chef' + '/' + ${buffet.chef.id}}"
-				th:text="${buffet.chef.nome}+' '+${buffet.chef.cognome}"> 
+			<a th:href="@{'/chef' + '/' + ${buffet.chef.id}}" th:text="${buffet.chef.nome}+' '+${buffet.chef.cognome}">
 			</a>
+		</div>
+		<div>
+			<strong>Piatti offerti:</strong>
+			<span th:each="piatto : ${buffet.piatti}">
+				<ta><a th:href="@{'/piatto' + '/' + ${piatto.id}}">
+						<tb th:text="${piatto.nome}" />,
+					</a></ta>
+			</span>
 		</div>
 	</div>
 </body>
