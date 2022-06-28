@@ -39,6 +39,25 @@ public class IngredienteController {
 		return "/ingrediente/ingredienti.html";
 	}
 	
+	@GetMapping("/toUpdateIngrediente/{id}")
+	public String toUpdateIngrediente(@PathVariable("id") Long id, Model model) {
+		Ingrediente ingrediente = ingredienteService.findById(id);
+		model.addAttribute("ingrediente", ingrediente);
+		return "/ingrediente/ingredienteFormDiModifica.html";
+	}
+	
+	@PostMapping("/ingrediente/{id}")
+	public String updateIngrediente(@Valid @ModelAttribute("ingrediente") Ingrediente ingrediente, BindingResult bindingResult, Model model) {
+		ingredienteValidator.validate(ingrediente, bindingResult);
+		
+		if(!bindingResult.hasErrors()) {
+			ingredienteService.save(ingrediente);
+			model.addAttribute("ingrediente", ingrediente);
+			return "/ingrediente/ingrediente.html";
+		}
+		return "/ingrediente/ingredienteFormDiModifica.html";
+	}
+	
 	@PostMapping("/ingrediente")
 	public String addIngrediente(@Valid @ModelAttribute("ingrediente") Ingrediente ingrediente, BindingResult bindingResult, Model model) {
 		ingredienteValidator.validate(ingrediente, bindingResult);

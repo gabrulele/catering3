@@ -15,6 +15,7 @@
 		<li th:each="ingrediente: ${ingredienti}">
 			<a th:href="@{'/ingrediente'+'/'+${ingrediente.id}}" th:text="${ingrediente.nome}">Pasta</a>&nbsp
 			<a th:href="@{'/toDeleteIngrediente'+'/'+${ingrediente.id}}" th:text="rimuovi">rimuovi</a>
+			<a th:href="@{'/toUpdateIngrediente'+'/'+${ingrediente.id}}" th:text="modifica">modifica</a>
 		</li>
 	</ul>
 </body>
