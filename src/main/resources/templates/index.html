@@ -1,23 +1,34 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
+<html>
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
+	<link rel="stylesheet" th:href="@{/css/index.css}" />
+	<link rel="icon" th:href="@{/images/logo.png}" type="image/x-icon">
 	<meta charset="UTF-8" />
 	<title>Servizio catering</title>
 </head>
 
 <body>
 	<div>
-		<span><a th:href="@{/chefsUser}">Elenco chefs</a>&nbsp;
-			<a th:href="@{/buffetsUser}">Elenco buffets</a>&nbsp;
-			<a th:href="@{/piattiUser}">Elenco piatti</a>&nbsp;
-			<a th:href="@{/ingredientiUser}">Elenco ingredienti</a>&nbsp;</span>
-			<a style= float:right; th:href="@{/login}"> Login</a>
+		<a th:href="@{/chefsUser}">Elenco chefs</a>&nbsp;
+		<a th:href="@{/buffetsUser}">Elenco buffets</a>&nbsp;
+		<a th:href="@{/piattiUser}">Elenco piatti</a>&nbsp;
+		<a th:href="@{/ingredientiUser}">Elenco ingredienti</a>&nbsp;
+		<a style=float:right; th:href="@{/login}"> Login</a>
 	</div>
 	<div>
-		<hr>
-		<h1>Servizio di catering</h1>
+		<br><hr>
+		<h1><strong>CATERING SERVICE</strong></h1>
+		<div><img th:src="@{/images/slider2.jpg}" style="width:1536px;height:600px"></div>
 		</hr>
+	</div>
+	<div>
+		<h7>"Catering service" Servizio di Catering per Fiere, Catering Eventi, Banqueting per Eventi Aziendali,
+			Catering per Matrimoni.
+			Tel: contatti - Info: email.
+			Immagini e contenuti sono © Copyright dei rispettivi proprietari. E' vietata la riproduzione, anche
+			parziale.</h7>
 	</div>
 </body>
 

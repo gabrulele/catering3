@@ -2,6 +2,8 @@
 <html>
 
 <head>
+	<link rel="stylesheet" th:href="@{/css/login.css}" />
+	<link rel="icon" th:href="@{/images/logo.png}" type="image/x-icon">
 	<meta charset="UTF-8" />
 	<title>Modifica ingrediente</title>
 </head>
@@ -17,17 +19,17 @@
 		</div>
 		<div>
 			Nome:
-			<input type=text th:field="*{nome}" />
+			<input class="input" type=text th:field="*{nome}" />
 			<div th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
 		</div>
 		<div>
 			Origine:
-			<input type=text th:field="*{origine}" />
+			<input class="input" type=text th:field="*{origine}" />
 			<div th:if="${#fields.hasErrors('origine')}" th:errors="*{origine}"></div>
 		</div>
 		<div>
 			Descrizione:
-			<input type=text th:field="*{descrizione}" />
+			<input class="input" type=text th:field="*{descrizione}" />
 			<div th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></div>
 		</div>
 		<div><button type="submit"> Conferma</button></div>

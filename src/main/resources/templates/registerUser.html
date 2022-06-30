@@ -2,11 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
+    <link rel="stylesheet"  th:href="@{/css/login.css}"/>
+    <link rel = "icon" th:href="@{/images/logo.png}" type = "image/x-icon">
 	<title>registrati</title>
 	<link rel="stylesheet" th:href="@{/css/login.css}" />
 </head>
 
 <body>
+	<footer><a th:href="@{/index}">Home</a></footer>
 	<form th:action="@{/register}" method="POST">
 
 		<input class="input" type="text" placeholder="username" required th:field="${credentials.username}" />
@@ -38,7 +41,6 @@
 		</div>
 
 		<button type="submit">Registrati</button>
-		<footer><a th:href="@{/index}">Home</a></footer>
 
 		</table>
 	</form>

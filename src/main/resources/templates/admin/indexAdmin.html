@@ -1,30 +1,44 @@
-
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
+	<link rel="stylesheet" th:href="@{/css/index.css}" />
+	<link rel="icon" th:href="@{/images/logo.png}" type="image/x-icon">
 	<meta charset="UTF-8" />
 	<title>Servizio catering</title>
 </head>
 
 <body>
 	<div>
-		<span><a th:href="@{/chef}">Elenco chefs</a>&nbsp;
-			<a th:href="@{/buffet}">Elenco buffets</a>&nbsp;
-			<a th:href="@{/piatto}">Elenco piatti</a>&nbsp;
-			<a th:href="@{/ingrediente}">Elenco ingredienti</a>&nbsp;</span>
+		<span>
+			<a th:href="@{/chef}">Elenco chefs </a>&nbsp;&nbsp;
+			&nbsp;&nbsp;<a th:href="@{/buffet}">Elenco buffets</a>&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;<a th:href="@{/piatto}">Elenco piatti</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;<a th:href="@{/ingrediente}">Elenco ingredienti</a>
+		</span>
 	</div>
 	<div>
-		<span><a th:href="@{/chefForm}">Inserisci chef</a>
-			<a th:href="@{/buffetForm}">Inserisci buffet</a>
-			<a th:href="@{/piattoForm}">Inserisci piatto</a>
-			<a th:href="@{/ingredienteForm}">Inserisci ingrediente</a></span>
-			<a style= float:right; th:href="@{/logout}"> Logout</a>
+		<span>
+			<a th:href="@{/chefForm}">Inserisci chef</a>&nbsp;
+			<a th:href="@{/buffetForm}">Inserisci buffet</a>&nbsp;
+			<a th:href="@{/piattoForm}">Inserisci piatto</a>&nbsp;
+			<a th:href="@{/ingredienteForm}">Inserisci ingrediente</a>
+			<a style=float:right; th:href="@{/logout}"> Logout</a>
+		</span>
 	</div>
 	<div>
 		<hr>
-		<h1>Servizio di catering</h1>
+		<h1><strong>CATERING SERVICE</strong></h1>
+		<div><img th:src="@{/images/slider2.jpg}" style="width:1536px;height:600px"></div>
 		</hr>
+	</div>
+	<div>
+		<h7>"Catering service" Servizio di Catering per Fiere, Catering Eventi, Banqueting per Eventi Aziendali,
+			Catering per Matrimoni.
+			Tel: contatti - Info: email.
+			Immagini e contenuti sono © Copyright dei rispettivi proprietari. E' vietata la riproduzione, anche
+			parziale.</h7>
+
 	</div>
 </body>
 

@@ -2,6 +2,8 @@
 <html>
 
 <head>
+    <link rel="stylesheet" th:href="@{/css/login.css}" />
+	<link rel="icon" th:href="@{/images/logo.png}" type="image/x-icon">
 	<meta charset="UTF-8" />
 	<title>Modifica parametri chef</title>
 </head>
@@ -17,17 +19,17 @@
 		</div>
 		<div>
 			Nome:
-			<input type=text th:field="*{nome}" />
+			<input class="input" type=text th:field="*{nome}" />
 			<div th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
 		</div>
 		<div>
 			Cognome:
-			<input type=text th:field="*{cognome}" />
+			<input class="input"type=text th:field="*{cognome}" />
 			<div th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></div>
 		</div>
 		<div>
 			Nazionalità:
-			<input type=text th:field="*{nazionalita}" />
+			<input class="input" type=text th:field="*{nazionalita}" />
 			<div th:if="${#fields.hasErrors('nazionalita')}" th:errors="*{nazionalita}"></div>
 		</div>
 		<div><button type="submit"> Conferma</button></div>
