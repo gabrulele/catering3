@@ -27,7 +27,7 @@ public class UserService {
     }
 
 	public boolean alreadyExist(User user) {
-		return userRepository.existsByNomeAndCognomeAndEmail(user.getNome(), user.getCognome(), user.getEmail());
+		return userRepository.existsByNomeAndCognome(user.getNome(), user.getCognome());
 	}
 	
 	public boolean containsNumbers(String nome, String cognome) {

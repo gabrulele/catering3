@@ -9,7 +9,7 @@
 </head>
 
 <body>
-	<footer><a th:href="@{/index}">Home</a></footer>
+	<a th:href="@{/index}">Home</a>
 	<form th:action="@{/register}" method="POST">
 
 		<input class="input" type="text" placeholder="username" required th:field="${credentials.username}" />

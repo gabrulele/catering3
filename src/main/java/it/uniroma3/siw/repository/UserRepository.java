@@ -5,6 +5,6 @@ import it.uniroma3.siw.model.User;
 
 public interface UserRepository extends CrudRepository<User, Long> {
 
-	boolean existsByNomeAndCognomeAndEmail(String nome, String cognome, String email);
+	boolean existsByNomeAndCognome(String nome, String cognome);
 
 }
