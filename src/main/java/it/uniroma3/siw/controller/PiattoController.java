@@ -31,7 +31,7 @@ public class PiattoController {
 	public String toDeletePiatto(@PathVariable("id") Long id, Model model) {
 		Piatto piatto = piattoService.findById(id);
 		model.addAttribute("piatto", piatto);
-		return "/piatto/toDeletePiatto.html";
+		return "/admin/piatto/toDeletePiatto.html";
 	}
 	
 	@GetMapping("/deletePiatto/{id}")
@@ -40,7 +40,7 @@ public class PiattoController {
 		piattoService.updateBuffets(piatto);
 		piattoService.deleteById(id);
 		model.addAttribute("piatti", piattoService.findAll());
-		return "/piatto/piatti.html";
+		return "/admin/piatto/piatti.html";
 	}
 	
 	@GetMapping("/toUpdatePiatto/{id}")
@@ -48,7 +48,7 @@ public class PiattoController {
 		Piatto piatto = piattoService.findById(id);
 		model.addAttribute("piatto", piatto);
 		model.addAttribute("ingredienti", ingredienteService.findAll());
-		return "/piatto/piattoFormDiModifica.html";
+		return "/admin/piatto/piattoFormDiModifica.html";
 	}
 	
 	@PostMapping("/piatto/{id}")
@@ -57,9 +57,9 @@ public class PiattoController {
 		if(!bindingResult.hasErrors()) {
 			piattoService.save(piatto);
 			model.addAttribute("piatto", piatto);
-			return "/piatto/piatto.html";
+			return "admin/piatto/piattoAdmin.html";
 		}
-		return "/piatto/piattoFormDiModifica.html";
+		return "/admin/piatto/piattoFormDiModifica.html";
 	}
 	
 	@PostMapping("/piatto")
@@ -69,16 +69,23 @@ public class PiattoController {
 		if(!bindingResult.hasErrors()) {
 			piattoService.save(piatto);
 			model.addAttribute("piatto", piatto);
-			return "/piatto/piatto.html";
+			return "admin/piatto/piattoAdmin.html";
 		}
-		return "/piatto/piattoForm.html";
+		return "/admin/piatto/piattoForm.html";
 	}
 	
 	@GetMapping("/piatto")
 	public String getAllPiatti(Model model) {
 		List<Piatto> piatti = piattoService.findAll();
 		model.addAttribute("piatti", piatti);
-		return "/piatto/piatti.html";
+		return "/admin/piatto/piatti.html";
+	}
+	
+	@GetMapping("/piattiUser")
+	public String getAllPiattiUser(Model model) {
+		List<Piatto> piatti = piattoService.findAll();
+		model.addAttribute("piatti", piatti);
+		return "/piatto/piattiUser.html";
 	}
 
 	@GetMapping("/piatto/{id}")
@@ -88,11 +95,18 @@ public class PiattoController {
 		return "/piatto/piatto.html";
 	}
 	
+	@GetMapping("/piattoAdmin/{id}")
+	public String getPiattoAdmin(@PathVariable("id") Long id, Model model) {
+		Piatto piatto = piattoService.findById(id);
+		model.addAttribute("piatto", piatto);
+		return "admin/piatto/piattoAdmin.html";
+	}
+	
 	@GetMapping("/piattoForm")
 	public String startPiatto(Model model) {
 		model.addAttribute("piatto", new Piatto());
 		model.addAttribute("ingredienti", ingredienteService.findAll());
-		return "/piatto/piattoForm.html";
+		return "/admin/piatto/piattoForm.html";
 	}
 	
 }

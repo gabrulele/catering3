@@ -8,12 +8,12 @@
 
 <body>
 	<div>
-		<a href="/">Home</a>
+		<a th:href="@{/default}">Home</a>
 	</div>
 	<h4>Elenco ingredienti</h4>
 	<ul>
 		<li th:each="ingrediente: ${ingredienti}">
-			<a th:href="@{'/ingrediente'+'/'+${ingrediente.id}}" th:text="${ingrediente.nome}">Pasta</a>&nbsp
+			<a th:href="@{'/ingredienteAdmin'+'/'+${ingrediente.id}}" th:text="${ingrediente.nome}">Pasta</a>&nbsp
 			<a th:href="@{'/toDeleteIngrediente'+'/'+${ingrediente.id}}" th:text="rimuovi">rimuovi</a>
 			<a th:href="@{'/toUpdateIngrediente'+'/'+${ingrediente.id}}" th:text="modifica">modifica</a>
 		</li>

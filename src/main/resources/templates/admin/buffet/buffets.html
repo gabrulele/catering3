@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Elenco buffets</title>
+</head>
+
+<body>
+	<div>
+		<footer><a th:href="@{/default}">Home</a></footer>
+	</div>
+	<h4>Elenco buffets</h4>
+	<ul>
+		<li th:each="buffet: ${buffets}">
+			<a th:href="@{'/buffetAdmin'+'/'+${buffet.id}}" th:text="${buffet.nome}">Mediterraneo</a>
+			<a th:href="@{'/toDeleteBuffet'+'/'+${buffet.id}}" th:text="rimuovi">rimuovi</a>
+			<a th:href="@{'/toUpdateBuffet'+'/'+${buffet.id}}" th:text="modifica">modifica</a>
+		</li>
+	</ul>
+</body>
+
+</html>

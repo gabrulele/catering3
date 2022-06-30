@@ -1,4 +1,3 @@
-
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 
@@ -9,16 +8,11 @@
 
 <body>
 	<div>
-		<span><a th:href="@{/chef}">Elenco chefs</a>&nbsp;
-			<a th:href="@{/buffet}">Elenco buffets</a>&nbsp;
-			<a th:href="@{/piatto}">Elenco piatti</a>&nbsp;
-			<a th:href="@{/ingrediente}">Elenco ingredienti</a>&nbsp;</span>
-	</div>
-	<div>
-		<span><a th:href="@{/chefForm}">Inserisci chef</a>
-			<a th:href="@{/buffetForm}">Inserisci buffet</a>
-			<a th:href="@{/piattoForm}">Inserisci piatto</a>
-			<a th:href="@{/ingredienteForm}">Inserisci ingrediente</a></span>
+		<span><a th:href="@{/chefsUser}">Elenco chefs</a>&nbsp;
+			<a th:href="@{/buffetsUser}">Elenco buffets</a>&nbsp;
+			<a th:href="@{/piattiUser}">Elenco piatti</a>&nbsp;
+			<a th:href="@{/ingredientiUser}">Elenco ingredienti</a>&nbsp;</span>
+			<a style= float:right; th:href="@{/login}"> Login</a>
 	</div>
 	<div>
 		<hr>

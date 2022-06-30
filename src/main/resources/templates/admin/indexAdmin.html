@@ -1,0 +1,31 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Servizio catering</title>
+</head>
+
+<body>
+	<div>
+		<span><a th:href="@{/chef}">Elenco chefs</a>&nbsp;
+			<a th:href="@{/buffet}">Elenco buffets</a>&nbsp;
+			<a th:href="@{/piatto}">Elenco piatti</a>&nbsp;
+			<a th:href="@{/ingrediente}">Elenco ingredienti</a>&nbsp;</span>
+	</div>
+	<div>
+		<span><a th:href="@{/chefForm}">Inserisci chef</a>
+			<a th:href="@{/buffetForm}">Inserisci buffet</a>
+			<a th:href="@{/piattoForm}">Inserisci piatto</a>
+			<a th:href="@{/ingredienteForm}">Inserisci ingrediente</a></span>
+			<a style= float:right; th:href="@{/logout}"> Logout</a>
+	</div>
+	<div>
+		<hr>
+		<h1>Servizio di catering</h1>
+		</hr>
+	</div>
+</body>
+
+</html>

@@ -3,15 +3,15 @@
 
 <head>
 	<meta charset="UTF-8" />
-	<title>Modifica parametri chef</title>
+	<title>Inserimento chef</title>
 </head>
 
 <body>
 	<div>
-		<a href="/">Home</a>
+		<a th:href="@{/default}">Home</a>
 	</div>
-	<h4>Modifica chef</h4>
-	<form th:action="@{'/chef'+'/'+${chef.id}}" th:method="POST" th:object="${chef}">
+	<h4>Inserisci nuovo chef</h4>
+	<form th:action="@{/chef}" th:method="POST" th:object="${chef}">
 		<div th:if="${#fields.hasGlobalErrors()}">
 			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">ErroreGlobale</p>
 		</div>

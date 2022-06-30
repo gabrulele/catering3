@@ -7,7 +7,7 @@
 </head>
 
 <body>
-	<a href="/">Home</a>
+	<a th:href="@{/default}">Home</a>
 	<h4>Modifica piatto</h4>
 	<form th:action="@{'/piatto'+'/'+${piatto.id}}" method="POST" th:object="${piatto}">
 		<div th:if="${#fields.hasGlobalErrors()}">

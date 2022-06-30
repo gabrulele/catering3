@@ -38,7 +38,7 @@ public class BuffetController {
 	public String toDeleteBuffet(@PathVariable("id") Long id, Model model) {
 		Buffet buffet = buffetService.findById(id);
 		model.addAttribute("buffet", buffet);
-		return "/buffet/toDeleteBuffet.html";
+		return "/admin/buffet/toDeleteBuffet.html";
 	}
 	
 	@GetMapping("/deleteBuffet/{id}")
@@ -47,7 +47,7 @@ public class BuffetController {
 		chefService.removeBuffet(buffet.getChef(), buffet);
 		buffetService.deleteById(id);
 		model.addAttribute("buffets", buffetService.findAll());
-		return "/buffet/buffets.html";
+		return "/admin/buffet/buffets.html";
 	}
 	
 	@GetMapping("/toUpdateBuffet/{id}")
@@ -56,7 +56,7 @@ public class BuffetController {
 		model.addAttribute("buffet", buffet);
 		model.addAttribute("chefs", chefService.findAll());
 		model.addAttribute("piatti", piattoService.findAll());
-		return "/buffet/buffetFormDiModifica.html";
+		return "/admin/buffet/buffetFormDiModifica.html";
 	}
 	
 	@PostMapping("/buffet/{id}")
@@ -65,9 +65,9 @@ public class BuffetController {
 		if(!bindingResult.hasErrors()) {
 			buffetService.save(buffet);
 			model.addAttribute("buffet", buffet);
-			return "/buffet/buffet.html";
+			return "admin/buffet/buffetAdmin.html";
 		}
-		return "/buffet/buffetFormDiModifica.html";
+		return "/admin/buffet/buffetFormDiModifica.html";
 	}
 	
 	@PostMapping("/buffet")
@@ -77,17 +77,25 @@ public class BuffetController {
 		if(!bindingResult.hasErrors()) {
 			buffetService.save(buffet);
 			model.addAttribute("buffet", buffet);
-			return "/buffet/buffet.html";
+			return "admin/buffet/buffetAdmin.html";
 		}
-		return "/buffet/buffetForm.html";
+		return "/admin/buffet/buffetForm.html";
 	}
 	
 	@GetMapping("/buffet")
 	public String getAllBuffets(Model model) {
 		List<Buffet> buffets = buffetService.findAll();
 		model.addAttribute("buffets", buffets);
-		return "/buffet/buffets.html";
+		return "/admin/buffet/buffets.html";
 	}
+	
+	@GetMapping("/buffetsUser")
+	public String getAllBuffetsUser(Model model) {
+		List<Buffet> buffets = buffetService.findAll();
+		model.addAttribute("buffets", buffets);
+		return "/buffet/buffetsUser.html";
+	}
+
 
 	@GetMapping("/buffet/{id}")
 	public String getBuffet(@PathVariable("id") Long id, Model model) {
@@ -96,12 +104,19 @@ public class BuffetController {
 		return "/buffet/buffet.html";
 	}
 	
+	@GetMapping("/buffetAdmin/{id}")
+	public String getBuffetAdmin(@PathVariable("id") Long id, Model model) {
+		Buffet buffet = buffetService.findById(id);
+		model.addAttribute("buffet", buffet);
+		return "/admin/buffet/buffetAdmin.html";
+	}
+	
 	@GetMapping("/buffetForm")
 	public String startBuffet(Model model) {
 		model.addAttribute("buffet", new Buffet());
 		model.addAttribute("chefs", chefService.findAll());
 		model.addAttribute("piatti", piattoService.findAll());
-		return "/buffet/buffetForm.html";
+		return "/admin/buffet/buffetForm.html";
 	}
 	
 }

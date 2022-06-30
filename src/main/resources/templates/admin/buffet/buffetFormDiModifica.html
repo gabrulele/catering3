@@ -3,13 +3,13 @@
 
 <head>
 	<meta charset="UTF-8" />
-	<title>Inserimento buffet</title>
+	<title>Modifica buffet</title>
 </head>
 
 <body>
-	<a href="/">Home</a>
-	<h4>Inserisci nuovo buffet</h4>
-	<form th:action="@{/buffet}" method="POST" th:object="${buffet}">
+	<a th:href="@{/default}">Home</a>
+	<h4>Modifica buffet</h4>
+	<form th:action="@{'/buffet'+'/'+${buffet.id}}" method="POST" th:object="${buffet}">
 		<div th:if="${#fields.hasGlobalErrors()}">
 			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">ErroreGlobale</p>
 		</div>

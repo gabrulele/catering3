@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Chef</title>
+</head>
+
+<body>
+	<div>
+		<a th:href="@{/default}">Home</a>
+	</div>
+	<div>
+		<h4>Dettagli chef:</h4>
+		<div>
+			<strong>Nome: </strong>
+			<span th:text="${chef.nome}">Paolo</span>
+		</div>
+		<div><strong>Cognome: </strong>
+			<span th:text="${chef.cognome}">Rossi</span>
+		</div>
+		<div><strong>Nazionalità: </strong>
+			<span th:text="${chef.nazionalita}">Italia</span>
+		</div>
+		<div><strong>Buffets offerti: </strong>
+			<span th:each="buffet : ${chef.buffets}">
+						<ta><a th:href="@{'/buffetAdmin' + '/' + ${buffet.id}}"><tb th:text="${buffet.nome}"/>,</a></ta>
+			</span>
+		</div>
+	</div>
+</body>
+
+</html>

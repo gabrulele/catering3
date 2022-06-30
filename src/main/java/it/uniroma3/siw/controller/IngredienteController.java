@@ -27,7 +27,7 @@ public class IngredienteController {
 	public String toDeleteIngrediente(@PathVariable("id") Long id, Model model) {
 		Ingrediente ingrediente = ingredienteService.findById(id);
 		model.addAttribute("ingrediente", ingrediente);
-		return "/ingrediente/toDeleteIngrediente.html";
+		return "/admin/ingrediente/toDeleteIngrediente.html";
 	}
 	
 	@GetMapping("/deleteIngrediente/{id}")
@@ -36,14 +36,14 @@ public class IngredienteController {
 		ingredienteService.updateBuffets(ingrediente);
 		ingredienteService.deleteById(id);
 		model.addAttribute("ingredienti", ingredienteService.findAll());
-		return "/ingrediente/ingredienti.html";
+		return "/admin/ingrediente/ingredienti.html";
 	}
 	
 	@GetMapping("/toUpdateIngrediente/{id}")
 	public String toUpdateIngrediente(@PathVariable("id") Long id, Model model) {
 		Ingrediente ingrediente = ingredienteService.findById(id);
 		model.addAttribute("ingrediente", ingrediente);
-		return "/ingrediente/ingredienteFormDiModifica.html";
+		return "/admin/ingrediente/ingredienteFormDiModifica.html";
 	}
 	
 	@PostMapping("/ingrediente/{id}")
@@ -52,9 +52,9 @@ public class IngredienteController {
 		if(!bindingResult.hasErrors()) {
 			ingredienteService.save(ingrediente);
 			model.addAttribute("ingrediente", ingrediente);
-			return "/ingrediente/ingrediente.html";
+			return "admin/ingrediente/ingredienteAdmin.html";
 		}
-		return "/ingrediente/ingredienteFormDiModifica.html";
+		return "/admin/ingrediente/ingredienteFormDiModifica.html";
 	}
 	
 	@PostMapping("/ingrediente")
@@ -64,16 +64,23 @@ public class IngredienteController {
 		if(!bindingResult.hasErrors()) {
 			ingredienteService.save(ingrediente);
 			model.addAttribute("ingrediente", ingrediente);
-			return "/ingrediente/ingrediente.html";
+			return "admin/ingrediente/ingredienteAdmin.html";
 		}
-		return "/ingrediente/ingredienteForm.html";
+		return "/admin/ingrediente/ingredienteForm.html";
 	}
 	
 	@GetMapping("/ingrediente")
 	public String getAllIngredienti(Model model) {
 		List<Ingrediente> ingredienti = ingredienteService.findAll();
 		model.addAttribute("ingredienti", ingredienti);
-		return "/ingrediente/ingredienti.html";
+		return "/admin/ingrediente/ingredienti.html";
+	}
+	
+	@GetMapping("/ingredientiUser")
+	public String getAllIngredientiUser(Model model) {
+		List<Ingrediente> ingredienti = ingredienteService.findAll();
+		model.addAttribute("ingredienti", ingredienti);
+		return "/ingrediente/ingredientiUser.html";
 	}
 
 	@GetMapping("/ingrediente/{id}")
@@ -83,10 +90,17 @@ public class IngredienteController {
 		return "/ingrediente/ingrediente.html";
 	}
 	
+	@GetMapping("/ingredienteAdmin/{id}")
+	public String getIngredienteAdmin(@PathVariable("id") Long id, Model model) {
+		Ingrediente ingrediente = ingredienteService.findById(id);
+		model.addAttribute("ingrediente", ingrediente);
+		return "admin/ingrediente/ingredienteAdmin.html";
+	}
+	
 	@GetMapping("/ingredienteForm")
 	public String startIngrediente(Model model) {
 		model.addAttribute("ingrediente", new Ingrediente());
-		return "/ingrediente/ingredienteForm.html";
+		return "/admin/ingrediente/ingredienteForm.html";
 	}
 	
 }

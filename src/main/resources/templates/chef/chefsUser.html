@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Elenco chefs</title>
+</head>
+
+<body>
+	<div>
+		<a href="/">Home</a>
+	</div>
+	<h4>Elenco chefs</h4>
+	<ul>
+		<li th:each="chef: ${chefs}">
+			<a th:href="@{'/chef'+'/'+${chef.id}}" th:text="${chef.nome}+' '+${chef.cognome}">Paolo Rossi</a>
+		</li>
+	</ul>
+</body>
+
+</html>

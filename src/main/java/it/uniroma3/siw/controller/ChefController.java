@@ -29,21 +29,21 @@ public class ChefController {
 	public String toDeleteChef(@PathVariable("id") Long id, Model model) {
 		Chef chef = chefService.findById(id);
 		model.addAttribute("chef", chef);
-		return "/chef/toDeleteChef.html";
+		return "/admin/chef/toDeleteChef.html";
 	}
 	
 	@GetMapping("/deleteChef/{id}")
 	public String deleteChef(@PathVariable("id") Long id, Model model) {
 		chefService.deleteById(id);
 		model.addAttribute("chefs", chefService.findAll());
-		return "/chef/chefs.html";
+		return "/admin/chef/chefs.html";
 	}
 	
 	@GetMapping("/toUpdateChef/{id}")
 	public String toUpdateChef(@PathVariable("id") Long id, Model model) {
 		Chef chef = chefService.findById(id);
 		model.addAttribute("chef", chef);
-		return "/chef/chefFormDiModifica.html";
+		return "/admin/chef/chefFormDiModifica.html";
 	}
 	
 	@PostMapping("/chef/{id}")
@@ -54,9 +54,9 @@ public class ChefController {
 		if(!bindingResult.hasErrors()) {
 			chefService.save(chef);
 			model.addAttribute("chef", chef);
-			return "/chef/chef.html";
+			return "admin/chef/chefAdmin.html";
 		}
-		return "/chef/chefFormDiModifica.html";
+		return "/admin/chef/chefFormDiModifica.html";
 	}
 	
 	@PostMapping("/chef")
@@ -67,16 +67,23 @@ public class ChefController {
 		if(!bindingResult.hasErrors()) {
 			chefService.save(chef);
 			model.addAttribute("chef", chef);
-			return "/chef/chef.html";
+			return "admin/chef/chefAdmin.html";
 		}
-		return "/chef/chefForm.html";
+		return "/admin/chef/chefForm.html";
 	}
 	
 	@GetMapping("/chef")
 	public String getAllChefs(Model model) {
 		List<Chef> chefs = chefService.findAll();
 		model.addAttribute("chefs", chefs);
-		return "/chef/chefs.html";
+		return "/admin/chef/chefs.html";
+	}
+	
+	@GetMapping("/chefsUser")
+	public String getAllChefsUser(Model model) {
+		List<Chef> chefs = chefService.findAll();
+		model.addAttribute("chefs", chefs);
+		return "/chef/chefsUser.html";
 	}
 
 	@GetMapping("/chef/{id}")
@@ -86,10 +93,17 @@ public class ChefController {
 		return "/chef/chef.html";
 	}
 	
+	@GetMapping("/chefAdmin/{id}")
+	public String getChefAdmin(@PathVariable("id") Long id, Model model) {
+		Chef chef = chefService.findById(id);
+		model.addAttribute("chef", chef);
+		return "admin/chef/chefAdmin.html";
+	}
+	
 	@GetMapping("/chefForm")
 	public String startChef(Model model) {
 		model.addAttribute("chef", new Chef());
-		return "/chef/chefForm.html";
+		return "/admin/chef/chefForm.html";
 	}
 	
 }
