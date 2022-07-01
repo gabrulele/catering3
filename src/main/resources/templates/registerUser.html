@@ -2,8 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <link rel="stylesheet"  th:href="@{/css/login.css}"/>
-    <link rel = "icon" th:href="@{/images/logo.png}" type = "image/x-icon">
+	<link rel="stylesheet" th:href="@{/css/login.css}" />
+	<link rel="icon" th:href="@{/images/logo.png}" type="image/x-icon">
 	<title>registrati</title>
 	<link rel="stylesheet" th:href="@{/css/login.css}" />
 </head>
@@ -13,31 +13,30 @@
 	<form th:action="@{/register}" method="POST">
 
 		<input class="input" type="text" placeholder="username" required th:field="${credentials.username}" />
-		<span th:if="${#fields.hasErrors('credentials.username')}" th:errors="${credentials.username}"
-			th:style="'color:red'"></span>
+		<span th:if="${#fields.hasErrors('credentials.username')}" th:errors="${credentials.username}"></span>
+		
 		<input class="input" type="password" placeholder="password" required th:field="${credentials.password}" />
-		<span th:if="${#fields.hasErrors('credentials.password')}" th:errors="${credentials.password}"
-			th:style="'color:red'"></span>
-		<input class="input" type="text" placeholder="nome" required th:field="${user.nome}" /></td>
-		<span th:if="${#fields.hasErrors('user.nome')}" th:errors="${user.nome}" th:style="'color:red'">
-		</span>
-		<input class="input" type="text" placeholder="cognome" required th:field="${user.cognome}" /></td>
-		<span th:if="${#fields.hasErrors('user.cognome')}" th:errors="${user.cognome}" th:style="'color:red'">
-		</span>
-		</span>
-		<input class="input" type="text" placeholder="email" required th:field="${user.email}" /></td>
-		<span th:if="${#fields.hasErrors('user.email')}" th:errors="${user.email}" th:style="'color:red'">
-		</span>
+		<span th:if="${#fields.hasErrors('credentials.password')}" th:errors="${credentials.password}"></span>
+		
+		<input class="input" type="text" placeholder="nome" required th:field="${user.nome}" />
+		<span th:if="${#fields.hasErrors('user.nome')}" th:errors="${user.nome}" th:style="'color:red'"></span>
+		
+		<input class="input" type="text" placeholder="cognome" required th:field="${user.cognome}" />
+		<span th:if="${#fields.hasErrors('user.cognome')}" th:errors="${user.cognome}"></span>
+		
+		<input class="input" type="text" placeholder="email" required th:field="${user.email}" />
+		<span th:if="${#fields.hasErrors('user.email')}" th:errors="${user.email}"></span>
 
 		<div th:object="${user}">
-			<span th:if="${#fields.hasGlobalErrors()}">
-				<span th:each="err : ${#fields.globalErrors()}" th:text="${err}"></span>
-			</span>
+			<div th:if="${#fields.hasGlobalErrors()}">
+				<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">ErroreGlobale</p>
+			</div>
 		</div>
+		
 		<div th:object="${credentials}">
-			<span th:if="${#fields.hasGlobalErrors()}">
-				<span th:each="err : ${#fields.globalErrors()}" th:text="${err}"></span>
-			</span>
+			<div th:if="${#fields.hasGlobalErrors()}">
+				<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">ErroreGlobale</p>
+			</div>
 		</div>
 
 		<button type="submit">Registrati</button>
