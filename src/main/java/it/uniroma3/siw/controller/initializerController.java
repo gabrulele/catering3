@@ -7,7 +7,7 @@ import it.uniroma3.siw.model.Ingrediente;
 import it.uniroma3.siw.service.IngredienteService;
 
 @Controller
-public class initializerController {
+public class InitializerController {
 	
 	@Autowired
 	private IngredienteService ingredienteService;

@@ -13,7 +13,7 @@
 	<form th:action="@{/register}" method="POST">
 
 		<input class="input" type="text" placeholder="username" required th:field="${credentials.username}" />
-		<span th:if="${#fields.hasErrors('credentials.username')}" th:errors="${credentials.username}"></span>
+		<span th:if="${#fields.hasErrors('credentials.username')}" th:errors="${credentials.username}" th:style="'color:red'"></span>
 		
 		<input class="input" type="password" placeholder="password" required th:field="${credentials.password}" />
 		<span th:if="${#fields.hasErrors('credentials.password')}" th:errors="${credentials.password}"></span>
@@ -22,7 +22,7 @@
 		<span th:if="${#fields.hasErrors('user.nome')}" th:errors="${user.nome}" th:style="'color:red'"></span>
 		
 		<input class="input" type="text" placeholder="cognome" required th:field="${user.cognome}" />
-		<span th:if="${#fields.hasErrors('user.cognome')}" th:errors="${user.cognome}"></span>
+		<span th:if="${#fields.hasErrors('user.cognome')}" th:errors="${user.cognome}" th:style="'color:red'"></span>
 		
 		<input class="input" type="text" placeholder="email" required th:field="${user.email}" />
 		<span th:if="${#fields.hasErrors('user.email')}" th:errors="${user.email}"></span>

@@ -15,11 +15,14 @@
 	<h4>Elenco chefs</h4>
 	<ul>
 		<li th:each="chef: ${chefs}">
-			<a th:href="@{'/chefAdmin'+'/'+${chef.id}}" th:text="${chef.nome}+' '+${chef.cognome}">Paolo Rossi</a>&nbsp
+			<a th:href="@{'/chefAdmin'+'/'+${chef.id}}" th:text="${chef.nome}+' '+${chef.cognome}">Paolo Rossi</a>&nbsp;
 			<a th:href="@{'/toDeleteChef'+'/'+${chef.id}}" th:text="rimuovi">rimuovi</a>
 			<a th:href="@{'/toUpdateChef'+'/'+${chef.id}}" th:text="modifica">modifica</a>
 		</li>
 	</ul>
+	<div>
+		&nbsp;&nbsp;&nbsp;<a th:href="@{/ordinaChef}" th:text="ordina"></a>
+	</div>
 </body>
 
 </html>

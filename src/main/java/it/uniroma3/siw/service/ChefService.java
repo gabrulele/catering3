@@ -78,4 +78,8 @@ public class ChefService {
 		return false;
 	}
 
+	public List<Chef> ordina() {
+		return chefRepository.findByOrderByNomeAsc();
+	}
+
 }

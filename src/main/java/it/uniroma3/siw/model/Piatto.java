@@ -1,3 +1,5 @@
+
+
 package it.uniroma3.siw.model;
 
 import java.util.List;
@@ -79,6 +81,5 @@ public class Piatto {
 	public void setIngredienti(List<Ingrediente> ingredienti) {
 		this.ingredienti = ingredienti;
 	}
-	
-	
+		
 }

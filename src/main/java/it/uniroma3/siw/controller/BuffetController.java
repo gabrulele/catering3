@@ -61,12 +61,15 @@ public class BuffetController {
 	
 	@PostMapping("/buffet/{id}")
 	public String updateBuffet(@Valid @ModelAttribute("buffet") Buffet buffet, BindingResult bindingResult, Model model) {
+		buffetValidator.validate(buffet, bindingResult);
 		
 		if(!bindingResult.hasErrors()) {
 			buffetService.save(buffet);
 			model.addAttribute("buffet", buffet);
 			return "admin/buffet/buffetAdmin.html";
 		}
+		model.addAttribute("chefs", chefService.findAll());
+		model.addAttribute("piatti", piattoService.findAll());
 		return "/admin/buffet/buffetFormDiModifica.html";
 	}
 	
@@ -79,6 +82,8 @@ public class BuffetController {
 			model.addAttribute("buffet", buffet);
 			return "admin/buffet/buffetAdmin.html";
 		}
+		model.addAttribute("chefs", chefService.findAll());
+		model.addAttribute("piatti", piattoService.findAll());
 		return "/admin/buffet/buffetForm.html";
 	}
 	

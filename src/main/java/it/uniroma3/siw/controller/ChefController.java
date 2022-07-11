@@ -106,4 +106,11 @@ public class ChefController {
 		return "/admin/chef/chefForm.html";
 	}
 	
+	@GetMapping("/ordinaChef")
+	public String getAllChefsOrdinati(Model model) {
+		List<Chef> chefs = chefService.ordina();
+	    model.addAttribute("chefs", chefs);
+		return "/admin/chef/chefs.html";
+	}
+	
 }
