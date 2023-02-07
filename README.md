@@ -1,5 +1,5 @@
 # catering3
 
-siw exam - tagga & cuci
+siw exam - Catering3
 
-Server Postgres: db: taggaecuci (localhost)
+Server Postgres: db: catering (localhost)
